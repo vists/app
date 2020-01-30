@@ -2,6 +2,7 @@ package com.example.myapplication.viewmodel
 
 import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.viewModelScope
 import com.example.myapplication.injection.anotation.PerActivity
 import com.example.myapplication.injection.provider.DataPersonProvider
 import com.example.myapplication.model.DataPerson
@@ -18,9 +19,8 @@ class MainActivityViewModel @Inject constructor(
 
 ) : BaseViewModel() {
 
-
     init {
-        coroutineScopeMainJob.launch {
+        viewModelScope.launch {
             dataPersonList = dataPersonProvider.getDataPersonList().await()
         }
     }
@@ -33,8 +33,8 @@ class MainActivityViewModel @Inject constructor(
         @Bindable("dataPersonList")
         get() = "Total size: ${dataPersonList.size}"
 
-    override fun onCleared() {
-        coroutineScopeMainJob.cancel()
-        super.onCleared()
-    }
+//    override fun onCleared() {
+//        coroutineScopeMainJob.cancel()
+//        super.onCleared()
+//    }
 }

@@ -45,10 +45,10 @@ abstract class ModuleMainActivity {
                 viewModel = viewViewModel
             )
 
-        @JvmStatic
-        @Provides
-        fun provideCoroutineScopeMainJob(@MainScheduler main: MainCoroutineDispatcher, @JobScheduler job:CompletableJob) =
-            CoroutineScope(main+job)
+//        @JvmStatic
+//        @Provides
+//        fun provideCoroutineScopeMainJob(@MainScheduler main: MainCoroutineDispatcher, @JobScheduler job:CompletableJob) =
+//            CoroutineScope(main+job)
 
         @JvmStatic
         @Provides
