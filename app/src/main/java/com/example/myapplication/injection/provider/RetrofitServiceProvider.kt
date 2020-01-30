@@ -11,22 +11,17 @@ import javax.inject.Inject
 class RetrofitServiceProvider @Inject constructor() {
 
 
-    private var service: Retrofit.Builder
-    private var defaultHttpClient: OkHttpClient
-
-
-   init {
+    private val service: Retrofit.Builder by lazy {
         val httpBuilder = OkHttpClient.Builder()
         val gson = GsonBuilder()
             .create()
-        defaultHttpClient = httpBuilder
+        val defaultHttpClient = httpBuilder
             .build()
-        service = Retrofit.Builder()
+         Retrofit.Builder()
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(defaultHttpClient)
             .baseUrl(BuildConfig.SERVER_URL)
-
     }
 
     fun <T> getServiceRetrofit(clazz: Class<T>): T {

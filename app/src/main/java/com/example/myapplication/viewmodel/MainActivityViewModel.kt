@@ -23,7 +23,6 @@ class MainActivityViewModel @Inject constructor(
         coroutineScopeMainJob.launch {
             dataPersonList = dataPersonProvider.getDataPersonList().await()
         }
-
     }
 
     @set:Bindable
