@@ -8,7 +8,7 @@
 
         <variable
             name="mainActivityViewModel"
-            type="com.example.myapplication.viewmodel.activity.MainActivityViewModel" />
+            type="com.app.changecoin.viewmodel.activity.MainActivityViewModel" />
 
     </data>
 

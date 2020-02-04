@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <import type="com.example.myapplication.model.DataPerson"/>
+        <import type="com.app.changecoin.model.DataPerson"/>
         <variable
             name="loginFragmentViewModel"
-            type="com.example.myapplication.viewmodel.fragment.LoginFragmentViewModel" />
+            type="com.app.changecoin.viewmodel.fragment.LoginFragmentViewModel" />
 
         <variable
             name="adapterDataPerson"
-            type="com.example.myapplication.adapterlist.BaseDataBindAdapter&lt;DataPerson>" />
+            type="com.app.changecoin.adapterlist.BaseDataBindAdapter&lt;DataPerson>" />
 
     </data>
 
