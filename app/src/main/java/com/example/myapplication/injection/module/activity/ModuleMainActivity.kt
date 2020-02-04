@@ -6,18 +6,19 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.adapterlist.BaseDataBindAdapter
 import com.example.myapplication.api.DataPersonApi
-import com.example.myapplication.injection.anotation.JobScheduler
-import com.example.myapplication.injection.anotation.MainScheduler
+import com.example.myapplication.injection.anotation.PerFragment
 import com.example.myapplication.injection.anotation.ViewModelKey
 import com.example.myapplication.injection.factory.ViewModelFactory
+import com.example.myapplication.injection.module.fragment.ModuleLoginFragment
 import com.example.myapplication.injection.provider.RetrofitServiceProvider
 import com.example.myapplication.model.DataPerson
-import com.example.myapplication.viewmodel.MainActivityViewModel
+import com.example.myapplication.ui.fragment.login.LoginFragment
+import com.example.myapplication.viewmodel.activity.MainActivityViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
-import kotlinx.coroutines.*
 
 @Module
 abstract class ModuleMainActivity {
@@ -36,25 +37,19 @@ abstract class ModuleMainActivity {
 
     @Module
     companion object {
-               @JvmStatic
-        @Provides
-        fun provideAdapterDataPerson(viewViewModel: MainActivityViewModel) =
-            BaseDataBindAdapter<DataPerson>(
-                R.layout.item_data,
-                BR.dataPerson,
-                viewModel = viewViewModel
-            )
 
 //        @JvmStatic
 //        @Provides
 //        fun provideCoroutineScopeMainJob(@MainScheduler main: MainCoroutineDispatcher, @JobScheduler job:CompletableJob) =
 //            CoroutineScope(main+job)
 
-        @JvmStatic
-        @Provides
-        fun provideRequestDataPerson(retrofitServiceProvider: RetrofitServiceProvider) =
-           retrofitServiceProvider.getServiceRetrofit(DataPersonApi::class.java)
-
     }
+
+
+    //Fragment init data
+
+    @PerFragment
+    @ContributesAndroidInjector(modules = [ModuleLoginFragment::class])
+    internal abstract fun contributeLoginFragment(): LoginFragment
 
 }

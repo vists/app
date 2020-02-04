@@ -7,7 +7,7 @@
         <variable name="dataPerson"
             type="com.example.myapplication.model.DataPerson" />
         <variable name="viewModel"
-            type="com.example.myapplication.viewmodel.MainActivityViewModel" />
+            type="com.example.myapplication.viewmodel.activity.MainActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
